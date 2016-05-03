@@ -1,0 +1,113 @@
+<% layout('/layout'); %>
+<% block('title', '创建人员'); %>
+<% block('crumbs', '<li>小区人员管理</li><li class="active">创建人员</li>'); %>
+<% stylesheet('/libs/select2/select2.min.css'); %>
+<% script('/libs/select2/select2.min.js'); %>
+<% script('/libs/select2/zh-CN.js'); %>
+<% stylesheet('/libs/bootstrap/bootstrap.min.css'); %>
+<% script('/libs/bootstrap/bootstrap.min.js'); %>
+<% stylesheet('/libs/fontawesome/font-awesome.min.css'); %>
+<% stylesheet('/libs/bootstrap-datetimepicker/datetimepicker.css'); %>
+<% script('/libs/bootstrap-datetimepicker/datetimepicker.js'); %>
+<% script('/libs/bootstrap-datetimepicker/datetimepicker.zh-CN.js'); %>
+<% script('/app/person/person-form.js'); %>
+
+<div class="row" id="container">
+  <div class="col-xs-12 col-md-8 col-md-offset-2">
+    <div class="box box-info">
+      <div class="box-body">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="name" class="col-md-2 col-xs-3 text-right control-label">
+              <span style="color:#FF0000">* </span>姓名
+            </label>
+            <div class="col-md-8 col-xs-8">
+              <input type="text" class="form-control" id="name" placeholder="请输入要插入信息的姓名">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="sex" class="col-md-2 col-xs-3 text-right control-label">
+              <span style="color:#FF0000">* </span>性别
+            </label>
+            <div class="col-md-8 col-xs-8">
+              <select class="form-control" id="sex">
+                <option value="">请选择性别</option>
+                <option value="男">男</option>
+                <option value="女">女</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="nation" class="col-md-2 col-xs-3 text-right control-label">
+              <span style="color:#FF0000">* </span>民族
+            </label>
+            <div class="col-md-8 col-xs-8">
+              <input type="text" class="form-control" id="nation" placeholder="请输入您的所在的民族">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="identity" class="col-md-2 col-xs-3 text-right control-label">
+              <span style="color:#FF0000">* </span>身份证
+            </label>
+            <div class="col-md-8 col-xs-8">
+              <input type="text" class="form-control" id="identity" placeholder="请输入身份证号码">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="house" class="col-md-2 col-xs-3 text-right control-label">
+              <span style="color:#FF0000">* </span>住址
+            </label>
+            <div class="col-md-8 col-xs-8">
+              <select class="form-control" id="house"></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="phone" class="col-md-2 col-xs-3 text-right control-label">
+              <span style="color:#FF0000">* </span>电话
+            </label>
+            <div class="col-md-8 col-xs-8">
+              <input type="text" class="form-control" id="phone" placeholder="请输入联系电话">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="birthday" class="col-md-2 col-xs-3 text-right control-label">生日</label>
+            <div class="col-md-8 col-xs-8 ">
+              <input type="text" class="form-control" id="birthday" placeholder="请选择出生日期" readonly>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="education" class="col-md-2 col-xs-3 text-right control-label">教育程度</label>
+            <div class="col-md-8 col-xs-8">
+              <select class="form-control" id="education">
+                <option value="">请选择教育程度</option>
+                <option value="无">无</option>
+                <option value="小学">小学</option>
+                <option value="初中">初中</option>
+                <option value="高中">高中</option>
+                <option value="专科">专科</option>
+                <option value="大学本科">大学本科</option>
+                <option value="硕士及以上">硕士及以上</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="work" class="col-md-2 col-xs-3 text-right control-label">工作</label>
+            <div class="col-md-8 col-xs-8">
+              <input type="text" class="form-control" id="work" placeholder="请输入工作">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="company" class="col-md-2 col-xs-3 text-right control-label">公司/学校</label>
+            <div class="col-md-8 col-xs-8">
+              <input type="text" class="form-control" id="company" placeholder="请输入所在公司">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="box-footer text-center">
+        <button type="button" class="btn btn-success" id="btn-create">创建</button>
+        <button type="button" class="btn btn-success hidden" id="btn-edit">编辑</button>
+      </div>
+    </div>
+  </div>
+</div>

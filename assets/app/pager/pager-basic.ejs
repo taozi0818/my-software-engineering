@@ -1,0 +1,13 @@
+<div class="btn-group" role="group" aria-label="...">
+  <% if (page == 1) { %>
+  <button type="button" class="btn btn-default disabled"><i class="fa fa-angle-left"></i> 上一页</button>
+  <% } else { %>
+  <button type="button" class="btn btn-default btn-pre"><i class="fa fa-angle-left"></i> 上一页</button>
+  <% } %>
+  <% if (page == pageCount) { %>
+  <button type="button" class="btn btn-default disabled">下一页 <i class="fa fa-angle-right"></i></button>
+  <% } else { %>
+  <button type="button" class="btn btn-default btn-next">下一页 <i class="fa fa-angle-right"></i></button>
+  <% } %>
+</div>
+<input id="page" type="hidden" value="<%= page %>">

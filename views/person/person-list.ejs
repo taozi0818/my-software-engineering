@@ -1,0 +1,71 @@
+<% layout('/layout'); %>
+<% block('title', '小区人员管理'); %>
+<% block('crumbs', '<li>小区人员管理</li><li class="active">小区人员列表</li>'); %>
+<% stylesheet('/libs/select2/select2.min.css'); %>
+<% script('/libs/select2/select2.min.js'); %>
+<% script('/libs/select2/zh-CN.js'); %>
+<% stylesheet('/libs/bootstrap/bootstrap.min.css'); %>
+<% script('/libs/bootstrap/bootstrap.min.js'); %>
+<% script('/app/person/person-list.js'); %>
+
+<section class="content">
+  <div class="box box-info">
+    <div class="box-header">
+      <h3 class="title">小区人员列表</h3>
+    </div>
+
+    <div class="row">
+      <div class="box-body">
+        <div class="col-md-4 col-xs-12">
+          <label for="name">姓名</label>
+          <input class="form-control" id="name">
+        </div>
+        <div class="col-md-4 col-xs-12">
+          <label for="house">住址</label>
+          <select class="form-control" id="house"></select>
+        </div>
+      </div>
+    </div>
+
+    <div class="box-footer text-right">
+      <div class="row">
+        <div class="col-md-6 col-xs-6 text-left">
+          <button class="btn btn-default" id="btn-clear">清空</button>
+        </div>
+        <div class="col-md-6 col-xs-6 text-right">
+          <button class="btn btn-info" id="btn-search">
+            <i class="fa fa-search"></i> 搜索
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="box-header">
+      <h3 class="box-title">列表</h3>
+      <div class="box-tools pull-right">
+        <a class="btn btn-box-tool" href="/persons/form/page">
+          <i class="fa fa-plus"></i> 增加
+        </a>
+      </div>
+    </div>
+    <div class="box-body table-responsive no-padding">
+      <table class="table table-hover text-center">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>姓名</th>
+          <th>性别</th>
+          <th>住址</th>
+          <th>联系方式</th>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody id="tb-person">
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div id="pager" class="text-center"></div>
+</section>
