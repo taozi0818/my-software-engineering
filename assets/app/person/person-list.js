@@ -1,53 +1,53 @@
 $(function () {
   let $pager = $('#pager'),
     $house = $('#house').select2({
-    ajax: {
-      url: "/house",
-      dataType: 'json',
-      delay: 500,
-      data: function (params) {
-        return {
-          detailAdd: params.term,
-          page: params.page
-        };
+      ajax: {
+        url: "/house",
+        dataType: 'json',
+        delay: 500,
+        data: function (params) {
+          return {
+            detailAdd: params.term,
+            page: params.page
+          };
+        },
+        processResults: function (data, params) {
+          params.page = params.page || 1;
+
+          return {
+            results: data.data,
+            pagination: {
+              more: (params.page * 20) < data.total
+            }
+          };
+        }
       },
-      processResults: function (data, params) {
-        params.page = params.page || 1;
+      escapeMarkup: function (markup) {
+        return markup;
+      },
+      theme: 'classic',
+      minimumInputLength: 2,
+      templateResult: function (repo) {
+        if (repo.loading) {
+          return repo.text;
+        }
 
-        return {
-          results: data.data,
-          pagination: {
-            more: (params.page * 20) < data.total
-          }
-        };
+        let result = [];
+        result.push('<div>');
+        result.push('<i class="fa fa-home fa-2x"></i>');
+        result.push('<span style="margin-left: 1em;">' + repo.detailAdd + '</span>');
+        result.push(' - ' + repo.owner.name);
+        result.push('</div');
+
+        return result;
+      },
+      templateSelection: function (repo) {
+        return repo.detailAdd || repo.text;
       }
-    },
-    escapeMarkup: function (markup) {
-      return markup;
-    },
-    theme: 'classic',
-    minimumInputLength: 2,
-    templateResult: function (repo) {
-      if (repo.loading) {
-        return repo.text;
-      }
-
-      let result = [];
-      result.push('<div>');
-      result.push('<i class="fa fa-home fa-2x"></i>');
-      result.push('<span style="margin-left: 1em;">' + repo.detailAdd + '</span>');
-      result.push(' - ' + repo.owner.name);
-      result.push('</div');
-
-      return result;
-    },
-    templateSelection: function (repo) {
-      return repo.detailAdd || repo.text;
-    }
-  });
+    });
 
   // 点击删除
-   $('#tb-person').on('click', '.btn-delete', function () {
+  $('#tb-person').on('click', '.btn-delete', function () {
     var $allTd = $(this).parent().parent().children(),
       name = $allTd.eq(1).text().trim(),
       id = $allTd.find('.hid-id')[0].value,
@@ -80,7 +80,7 @@ $(function () {
     });
   });
 
-  function delPerson (dialogRef) {
+  function delPerson(dialogRef) {
     let id = $('#id').val();
 
     $.ajax({
@@ -136,7 +136,7 @@ $(function () {
     $.ajax({
       url: '/persons',
       type: 'GET',
-      data:{
+      data: {
         name: name,
         house: house,
         page: page
@@ -144,8 +144,8 @@ $(function () {
       success: function (result) {
         let personListHtml = new EJS({url: '/app/person/person-list.ejs'})
           .render({personList: result.data}),
-        pagerHtml = new EJS({url: '/app/pager/pager.ejs'})
-          .render({page: result.page, pageCount: result.pageCount});
+          pagerHtml = new EJS({url: '/app/pager/pager.ejs'})
+            .render({page: result.page, pageCount: result.pageCount});
 
         $('#tb-person').empty().html(personListHtml);
         $('#pager').empty().html(pagerHtml);

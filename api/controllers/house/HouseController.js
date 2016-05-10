@@ -4,7 +4,8 @@ const PAGE_NUM = 20;
 
 module.exports = {
   list: function (req, res, next) {
-    let detailAdd = req.query.detailAdd,
+    let owner = req.query.owner,
+      detailAdd = req.query.detailAdd,
       page = req.query.page || 1,
       skipNum = (page - 1)*PAGE_NUM,
       query = {where: {}, skip: skipNum, limit: PAGE_NUM},
@@ -12,6 +13,10 @@ module.exports = {
 
     if (detailAdd) {
       query.where.detailAdd = {like: `%${detailAdd}%`};
+    }
+    
+    if (owner) {
+      query.where.owner = owner;
     }
 
    then(function (defer) {

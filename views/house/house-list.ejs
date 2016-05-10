@@ -6,6 +6,7 @@
 <% script('/libs/select2/zh-CN.js'); %>
 <% stylesheet('/libs/bootstrap/bootstrap.min.css'); %>
 <% script('/libs/bootstrap/bootstrap.min.js'); %>
+<% script('/app/house/house-list.js'); %>
 
 <section class="content">
   <div class="box box-info">
@@ -17,11 +18,11 @@
       <div class="box-body">
         <div class="col-md-4 col-xs-12">
           <label for="owner">拥有者</label>
-          <input class="form-control" id="owner">
+          <select class="form-control" id="owner"></select>
         </div>
         <div class="col-md-4 col-xs-12">
-          <label for="house">住址</label>
-          <select class="form-control" id="house"></select>
+          <label for="detailAdd">门牌号</label>
+          <input class="form-control" id="detailAdd">
         </div>
       </div>
     </div>
@@ -56,7 +57,7 @@
           <th>#</th>
           <th>门牌号</th>
           <th>拥有者</th>
-          <th>总人口</th>
+          <th>居住人数</th>
           <th>操作</th>
         </tr>
         </thead>

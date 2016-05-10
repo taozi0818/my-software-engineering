@@ -1,0 +1,21 @@
+<% houseList.forEach(function (house, index) { %>
+<tr>
+  <td>
+    <%= index + 1 %>
+  </td>
+  <td>
+    <%= house.detailAdd %>
+  </td>
+  <td>
+    <%= house.owner.name %>
+  </td>
+  <td>
+    <%= house.persons.length %>
+  </td>
+  <td>
+    <input type="hidden" class="hid-id" value="<%= house.id %>">
+    <button class="btn btn-danger btn-xs btn-delete" id="btn-delete">删除</button>
+    <a class="btn btn-primary btn-xs" href="/house/form/page#<%= house.id %>">编辑</a>
+  </td>
+</tr>
+<% }); %>
