@@ -3,8 +3,8 @@ module.exports = {
   globalId: 'Elec',
   tableName: 'elec',
   attributes: {
-    detailAdd :{
-      type: 'string',
+    house :{
+      model: 'House',
       required: true
     },
     expense: {
@@ -12,8 +12,9 @@ module.exports = {
       defaultsTo: 0
     },
     status: {
-      type: 'boolean',
-      defaultsTo: true
+      type: 'string',
+      enum: ['ENABLE', 'DISABLE'],
+      defaultsTo:'ENABLE'
     }
   }
 };

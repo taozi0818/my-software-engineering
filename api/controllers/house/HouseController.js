@@ -27,8 +27,6 @@ module.exports = {
      totalCount = count;
      House.find(query)
        .populate('owner')
-       .populate('elecStatus')
-       .populate('proStatus')
        .populate('persons')
        .exec(defer);
    }).then(function (defer, Data) {
@@ -38,6 +36,64 @@ module.exports = {
 
      return next(err);
    })
+  },
+  elecList: function (req, res, next) {
+    let detailAdd = req.query.detailAdd,
+      page = req.query.page || 1,
+      skipNum = (page - 1)*PAGE_NUM,
+      query = {where: {}, skip: skipNum, limit: PAGE_NUM},
+      totalCount = 0;
+
+    if (detailAdd) {
+      query.where.detailAdd = {like: `%${detailAdd}%`};
+    }
+
+    then(function (defer) {
+
+      House.count(defer, query.where);
+    }).then(function (defer, count) {
+
+      totalCount = count;
+      House.find(query)
+        .populate('owner')
+        .populate('elecStatus')
+        .exec(defer);
+    }).then(function (defer, Data) {
+
+      return res.pagination(page, totalCount, Data);
+    }).fail(function (defer, err) {
+
+      return next(err);
+    })
+  },
+  proList: function (req, res, next) {
+    let detailAdd = req.query.detailAdd,
+      page = req.query.page || 1,
+      skipNum = (page - 1)*PAGE_NUM,
+      query = {where: {}, skip: skipNum, limit: PAGE_NUM},
+      totalCount = 0;
+
+    if (detailAdd) {
+      query.where.detailAdd = {like: `%${detailAdd}%`};
+    }
+
+    then(function (defer) {
+
+      House.count(defer, query.where);
+    }).then(function (defer, count) {
+
+      totalCount = count;
+      House.find(query)
+        .populate('owner')
+        .populate('proStatus')
+        .exec(defer);
+    }).then(function (defer, Data) {
+
+      return res.pagination(page, totalCount, Data);
+    }).fail(function (defer, err) {
+
+      return next(err);
+    })
   },
   change: function(req, res, next) {
     let owner = req.body.owner,

@@ -1,0 +1,25 @@
+<% propertyList.forEach(function (property, index) { %>
+<tr>
+  <td>
+    <%= index + 1 %>
+  </td>
+  <td>
+    <%= property.house.detailAdd %>
+  </td>
+  <td>
+    <%= property.expense %>
+  </td>
+  <td>
+    <% if (property.status === 'ENABLE') { %>
+    <span class="label label-success label-xs">启用</span>
+    <% } else { %>
+    <span class="label label-danger label-xs">停用</span>
+    <% } %>
+  </td>
+  <td>
+    <input class="form-control" type="hidden" value="<%= property.id %>">
+    <button class="btn btn-primary btn-xs" id="l-clear">重置</button>
+    <button class="btn btn-info btn-xs" id="l-edit">更新</button>
+  </td>
+</tr>
+<% }) %>
