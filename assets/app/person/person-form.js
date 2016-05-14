@@ -24,7 +24,6 @@ $(function () {
     escapeMarkup: function (markup) {
       return markup;
     },
-    theme: 'classic',
     minimumInputLength: 2,
     templateResult: function (repo) {
       if (repo.loading) {
@@ -45,7 +44,35 @@ $(function () {
     }
   });
 
-  // 初始化时间插件
+  $('#work').select2().change(function () {
+    let work = $('#work').val();
+
+    if (work === '在校') {
+      $('#l-school').removeClass('hidden');
+      $('#l-company').addClass('hidden');
+      $('#l-else').addClass('hidden');
+      $('#company').removeClass('hidden')
+    } else if (work === '在职') {
+      $('#l-company').removeClass('hidden');
+      $('#l-school').addClass('hidden');
+      $('#l-else').addClass('hidden');
+      $('#company').removeClass('hidden')
+    } else if (work === " " ){
+      $('#l-company').addClass('hidden');
+      $('#l-school').addClass('hidden');
+      $('#l-else').addClass('hidden');
+      $('#company').addClass('hidden');
+    } else {
+      $('#l-else').removeClass('hidden');
+      $('#l-company').addClass('hidden');
+      $('#l-school').addClass('hidden');
+      $('#company').removeClass('hidden')
+    }
+
+  });
+
+
+// 初始化时间插件
   $('#birthday').datetimepicker({
     format: 'yyyy-mm-dd',
     startView: 3,
@@ -67,6 +94,11 @@ $(function () {
       identity = $('#identity').val(),
       birthday = $('#birthday').val(),
       name = $('#name').val();
+
+    // 前端数据控制
+    if (!house || !sex || !nation || !phone || !identity || !name) {
+      return showFailDialog('请填写带星号的必填项目');
+    }
 
     // AJAX发送请求,成功后跳转小区人员列表界面
     $.ajax({
@@ -103,6 +135,12 @@ $(function () {
       birthday = $('#birthday').val(),
       name = $('#name').val();
 
+    // 前端数据控制
+    if (!house || !sex || !nation || !phone || !identity || !name) {
+      return showFailDialog('请填写带星号的必填项目');
+    }
+
+    // AJAX 请求更新
     $.ajax({
       url: '/persons/' + id,
       type: 'PUT',
@@ -132,6 +170,7 @@ $(function () {
       type: 'GET',
       success: function (result) {
         let data = result.data,
+          birthday = moment(data.birthday).format("YYYY-MM-DD"), // 利用moment对时间进行格式化
           $option = $('<option selected>' + data.house.detailAdd + '</option>')
             .val(data.house);
 
@@ -142,8 +181,7 @@ $(function () {
         $('#company').val(data.company);
         $('#phone').val(data.phone);
         $('#identity').val(data.identity);
-        $('#btn-birthday').text(data.birthday);
-        $('#birthday').val(data.birthday);
+        $('#birthday').val(birthday);
         $('#sex').val(data.sex).trigger('change');
         $('#education').val(data.education).trigger('change');
         $('#btn-create').addClass('hidden');
@@ -157,4 +195,6 @@ $(function () {
     detail();
   }
 
-});
+})
+;
+

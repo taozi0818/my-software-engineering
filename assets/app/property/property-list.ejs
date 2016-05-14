@@ -17,9 +17,9 @@
     <% } %>
   </td>
   <td>
-    <input class="form-control" type="hidden" value="<%= property.id %>">
-    <button class="btn btn-primary btn-xs" id="l-clear">重置</button>
-    <button class="btn btn-info btn-xs" id="l-edit">更新</button>
+    <input class="hide-id" type="hidden" value="<%= property.id %>">
+    <input class="hide-id" type="hidden" value="<%= property.house.detailAdd %>">
+    <button class="btn btn-primary btn-xs btn-clear ">重置</button>
   </td>
 </tr>
 <% }) %>

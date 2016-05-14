@@ -14,7 +14,7 @@ module.exports = {
     if (detailAdd) {
       query.where.detailAdd = {like: `%${detailAdd}%`};
     }
-    
+
     if (owner) {
       query.where.owner = owner;
     }
@@ -37,67 +37,9 @@ module.exports = {
      return next(err);
    })
   },
-  elecList: function (req, res, next) {
-    let detailAdd = req.query.detailAdd,
-      page = req.query.page || 1,
-      skipNum = (page - 1)*PAGE_NUM,
-      query = {where: {}, skip: skipNum, limit: PAGE_NUM},
-      totalCount = 0;
-
-    if (detailAdd) {
-      query.where.detailAdd = {like: `%${detailAdd}%`};
-    }
-
-    then(function (defer) {
-
-      House.count(defer, query.where);
-    }).then(function (defer, count) {
-
-      totalCount = count;
-      House.find(query)
-        .populate('owner')
-        .populate('elecStatus')
-        .exec(defer);
-    }).then(function (defer, Data) {
-
-      return res.pagination(page, totalCount, Data);
-    }).fail(function (defer, err) {
-
-      return next(err);
-    })
-  },
-  proList: function (req, res, next) {
-    let detailAdd = req.query.detailAdd,
-      page = req.query.page || 1,
-      skipNum = (page - 1)*PAGE_NUM,
-      query = {where: {}, skip: skipNum, limit: PAGE_NUM},
-      totalCount = 0;
-
-    if (detailAdd) {
-      query.where.detailAdd = {like: `%${detailAdd}%`};
-    }
-
-    then(function (defer) {
-
-      House.count(defer, query.where);
-    }).then(function (defer, count) {
-
-      totalCount = count;
-      House.find(query)
-        .populate('owner')
-        .populate('proStatus')
-        .exec(defer);
-    }).then(function (defer, Data) {
-
-      return res.pagination(page, totalCount, Data);
-    }).fail(function (defer, err) {
-
-      return next(err);
-    })
-  },
   change: function(req, res, next) {
     let owner = req.body.owner,
-      id = req.query.id;
+      id = req.params.id;
 
     then(function (defer) {
 
@@ -110,7 +52,26 @@ module.exports = {
       return next(err);
     })
   },
+  detail: function (req, res) {
+    let id = req.params.id;
+
+    then(function (defer) {
+
+      House.findOne({id: id})
+        .populate('owner')
+        .exec(defer);
+    }).then(function (defer, data) {
+
+      return res.success(data);
+    }).fail(function (defer, err) {
+
+      return res.error(err);
+    })
+  },
   listPage: function (req, res) {
     res.render('house/house-list.ejs');
+  },
+  formPage: function (req, res) {
+    res.render('house/house-form.ejs');
   }
 };

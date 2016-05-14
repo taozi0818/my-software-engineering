@@ -1,0 +1,41 @@
+<% layout('/layout'); %>
+<% block('title', '住房转让'); %>
+<% block('crumbs', '<li><a href="/house/list/page">住房管理</a></li><li class="active">住房转让</li>'); %>
+<% stylesheet('/libs/select2/select2.min.css'); %>
+<% script('/libs/select2/select2.min.js'); %>
+<% script('/libs/select2/zh-CN.js'); %>
+<% stylesheet('/libs/bootstrap/bootstrap.min.css'); %>
+<% script('/libs/bootstrap/bootstrap.min.js'); %>
+<% stylesheet('/libs/fontawesome/font-awesome.min.css'); %>
+<% script('/app/house/house-form.js'); %>
+
+<div class="row" id="container">
+  <div class="col-xs-12 col-md-8 col-md-offset-2">
+    <div class="box box-info">
+      <div class="box-body">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="detailAdd" class="col-md-2 col-xs-3 text-right control-label">
+              门牌号
+            </label>
+            <div class="col-md-8 col-xs-8">
+              <input class="form-control" id="detailAdd" readonly>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="owner" class="col-md-2 col-xs-3 text-right control-label">
+              房主
+            </label>
+            <div class="col-md-8 col-xs-8">
+              <select class="form-control" id="owner"></select>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="box-footer text-center">
+        <button type="button" class="btn btn-success" id="btn-edit">编辑</button>
+      </div>
+    </div>
+  </div>
+</div>

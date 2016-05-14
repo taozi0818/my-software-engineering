@@ -28,7 +28,8 @@
     "unescape-html": "1.0.0",
     "urlencode": "1.1.0",
     "waterline": "0.10.30",
-    "lodash": "3.10.1"
+    "lodash": "3.10.1",
+    "moment": "2.10.6"
   },
   "scripts": {
     "debug": "node debug app.js",

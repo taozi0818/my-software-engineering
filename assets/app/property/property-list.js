@@ -76,9 +76,57 @@ $(function () {
   });
 
   $('#btn-clear').click(function () {
-    $('#house').val('').trigger();
-    $('#status').val('').trigger();
+    $('#house').val('').trigger('change');
+    $('#status').val('').trigger('change');
   });
+
+  $('#tb-property').on('click', '.btn-clear', function () {
+    var $allTd = $(this).parent().parent().children(),
+      id = $allTd.find('.hide-id')[0].value,
+      detailAdd = $allTd.find('.hide-id')[1].value,
+      temp = [
+        '<input class="hidden" id="id" value="' + id + '">',
+        '<p><span class="text-bold" style="color:#FF0000;">' + detailAdd +'</span>的欠费记录将清零,继续请点击确认</p>'
+      ];
+
+    BootstrapDialog.show({
+      title: '欠费清零',
+      message: $(temp.join('')),
+      closable: true,
+      type: BootstrapDialog.TYPE_DANGER,
+      buttons: [
+        {
+          label: '确认',
+          cssClass: 'btn-primary',
+          action: clear
+        },
+        {
+          label: '取消',
+          cssClass: 'btn-default',
+          action: function (dialogRef) {
+            dialogRef.close();
+          }
+        }
+      ]
+    });
+  });
+
+  function clear(dialogRef) {
+    let id = $('#id').val();
+
+    $.ajax({
+      url: '/property/clear/' + id,
+      type: 'PUT',
+      data: {},
+      success: function () {
+        dialogRef.close();
+        search();
+      },
+      error: function () {
+        dialogRef.close();
+      }
+    })
+  }
 
   function search(page) {
     let status = $('#status').val();

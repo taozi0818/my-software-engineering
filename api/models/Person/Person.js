@@ -21,11 +21,9 @@ module.exports = {
     },
     work: {
       type: 'string',
-      required: true
     },
     company: {
       type: 'string',
-      required: true
     },
     phone: {
       type: 'string'

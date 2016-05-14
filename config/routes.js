@@ -1,6 +1,12 @@
 module.exports.routes = {
 
-  'GET /home': 'home/home.homePage', // 主页
+  // 授权
+  'GET /login': 'auth/Auth.loginPage', // 登陆页面
+  'POST /login': 'auth/Auth.login', // 验证登陆逻辑
+  'GET /logout': 'auth/Auth.logout', // 登出
+
+  'GET /': 'home/Home.homePage', //
+  'GET /home': 'home/Home.homePage', // 主页
   // 人员相关
   'GET /persons/list/page': 'person/Person.listPage', // 小区人员列表页面
   'GET /persons/form/page': 'person/Person.formPage', // 新建人员页面
@@ -11,9 +17,11 @@ module.exports.routes = {
   'GET /persons/:id': 'person/Person.findOne', // 个人信息
 
   // 住房相关
-  'GET /house': 'house/House.list', // 房屋列表
-  'PUT /house/:id': 'house/House.change', // 更改房屋拥有者
-  'GET /house/list/page': 'house/House.listPage', // 房屋列表页面
+  'GET /house': 'house/House.list', // 住房列表
+  'GET /house/:id': 'house/House.detail', // 住房详情
+  'PUT /house/:id': 'house/House.change', // 更改住房拥有者
+  'GET /house/list/page': 'house/House.listPage', // 住房列表页面
+  'GET /house/form/page': 'house/House.formPage', // 住房编辑页面
 
   // 物业费相关
   'GET /property': 'property/Property.list', // 按条件查询物业费相关列表

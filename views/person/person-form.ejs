@@ -22,7 +22,7 @@
               <span style="color:#FF0000">* </span>姓名
             </label>
             <div class="col-md-8 col-xs-8">
-              <input type="text" class="form-control" id="name" placeholder="请输入要插入信息的姓名">
+              <input type="text" class="form-control" id="name" placeholder="请输入您的姓名">
             </div>
           </div>
           <div class="form-group">
@@ -72,7 +72,7 @@
           <div class="form-group">
             <label for="birthday" class="col-md-2 col-xs-3 text-right control-label">生日</label>
             <div class="col-md-8 col-xs-8 ">
-              <input type="text" class="form-control" id="birthday" placeholder="请选择出生日期" readonly>
+              <input  class="form-control" id="birthday" placeholder="请选择出生日期" readonly>
             </div>
           </div>
           <div class="form-group">
@@ -91,15 +91,22 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="work" class="col-md-2 col-xs-3 text-right control-label">工作</label>
+            <label for="work" class="col-md-2 col-xs-3 text-right control-label">状态</label>
             <div class="col-md-8 col-xs-8">
-              <input type="text" class="form-control" id="work" placeholder="请输入工作">
+              <select class="form-control" id="work">
+                <option value=" ">请选择</option>
+                <option value="在校">在校</option>
+                <option value="在职">在职</option>
+                <option value="其他">其他</option>
+              </select>
             </div>
           </div>
           <div class="form-group">
-            <label for="company" class="col-md-2 col-xs-3 text-right control-label">公司/学校</label>
+            <label for="company" class="col-md-2 col-xs-3 text-right control-label hidden" id="l-else">备注</label>
+            <label for="company" class="col-md-2 col-xs-3 text-right control-label hidden" id="l-company">公司</label>
+            <label for="company" class="col-md-2 col-xs-3 text-right control-label hidden" id="l-school">学校</label>
             <div class="col-md-8 col-xs-8">
-              <input type="text" class="form-control" id="company" placeholder="请输入所在公司">
+              <input type="text" class="form-control hidden" id="company" placeholder="请输入相应信息">
             </div>
           </div>
         </form>
