@@ -1,5 +1,10 @@
-module.exports = function sessionAuth (req, res, next) {
+module.exports = function (req, res, next) {
 
-  return res.redirect('/login');
+  if (!req.session.user) {
+    console.log('not exists!');
+    return res.redirect('/login');
+  }
+
+  next();
 
 };
