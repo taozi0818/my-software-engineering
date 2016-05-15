@@ -22,19 +22,19 @@
       <span class="logo-lg"><b>CMS</b>ADMIN</span>
     </a>
     <nav class="navbar navbar-static-top" role="navigation">
-      <ul class="nav navbar-nav">
-        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-          <span class="sr-only">Toggle navigation</span>
-        </a>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a href="/logout">
-            退出&nbsp<i class="fa fa-sign-out"></i>&nbsp;&nbsp;
-          </a>
-          <input class="form-control" id="user" type="hidden" value="<%= req.session.user %>">
-        </li>
-      </ul>
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="/logout">
+              退出&nbsp<i class="fa fa-sign-out"></i>&nbsp;&nbsp;
+            </a>
+            <input class="form-control" id="user" type="hidden" value="<%= req.session.user %>">
+          </li>
+        </ul>
+      </div>
     </nav>
   </header>
   <aside class="main-sidebar">
@@ -105,9 +105,9 @@
 <script src="/libs/ejs.js"></script>
 <script src="/libs/ejs-helper.js"></script>
 <script src="/app/app.js"></script>
-<% if (req.session.isAdmin === false) {%>
+<% if (req.session.isAdmin === false) { %>
 <script src="/app/isAdmin.js"></script>
-<% }  %>
+<% } %>
 <%- scripts %>
 </body>
 </html>
