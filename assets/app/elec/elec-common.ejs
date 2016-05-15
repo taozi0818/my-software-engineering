@@ -1,0 +1,20 @@
+<% elecList.forEach(function (elec, index) { %>
+<tr>
+  <td>
+    <%= index + 1 %>
+  </td>
+  <td>
+    <%= elec.house.detailAdd %>
+  </td>
+  <td>
+    <%= elec.expense %>
+  </td>
+  <td>
+    <% if (elec.status === 'ENABLE') { %>
+    <span class="label label-success label-xs">启用</span>
+    <% } else { %>
+    <span class="label label-danger label-xs">停用</span>
+    <% } %>
+  </td>
+</tr>
+<% }) %>

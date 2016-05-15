@@ -1,17 +1,21 @@
 <% layout('/layout'); %>
-<% block('title', '水电费管理'); %>
-<% block('crumbs', '<li>水电费管理</li><li class="active">水电费管理</li>'); %>
+<% block('title', '物业费管理'); %>
+<% block('crumbs', '<li>物业费管理</li><li class="active">物业费管理</li>'); %>
 <% stylesheet('/libs/select2/select2.min.css'); %>
 <% script('/libs/select2/select2.min.js'); %>
 <% script('/libs/select2/zh-CN.js'); %>
 <% stylesheet('/libs/bootstrap/bootstrap.min.css'); %>
 <% script('/libs/bootstrap/bootstrap.min.js'); %>
+<% if (req.session.isAdmin === false) {%>
+<% script('/app/property/property-common.js'); %>
+<% } else {%>
 <% script('/app/property/property-list.js'); %>
+<% } %>
 
 <section class="content">
-  <div class="box box-info">
+  <div class="box box-info hidden" id="header">
     <div class="box-header">
-      <h3 class="title">水电费管理列表</h3>
+      <h3 class="title">物业费管理列表</h3>
     </div>
 
     <div class="row">
@@ -57,7 +61,7 @@
           <th>门牌号</th>
           <th>欠费</th>
           <th>状态</th>
-          <th>操作</th>
+          <th class="hidden" id="action">操作</th>
         </tr>
         </thead>
         <tbody id="tb-property">

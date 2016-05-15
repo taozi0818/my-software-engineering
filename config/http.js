@@ -19,7 +19,6 @@ module.exports.http = {
     ],
     myRequestLogger: function (req, res, next) {
       sails.log.info('Request:', req.url, req.method, req.body);
-      sails.log.info('session:', req.session);
       return next();
     }
   }

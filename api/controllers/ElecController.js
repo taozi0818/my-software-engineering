@@ -5,6 +5,7 @@ const PAGE_NUM = 20;
 module.exports = {
   list: function (req, res, next) {
     let status = req.query.status, 
+      house = req.query.house,
       page = req.query.page || 1,
       skipNum = (page - 1)*PAGE_NUM,
       query = {where: {}, skip: skipNum, limit: PAGE_NUM},
@@ -14,6 +15,10 @@ module.exports = {
       query.where.status = status;
     }
 
+    if (house) {
+      query.where.house = house;
+    }
+    
     then(function (defer) {
 
       Elec.count(defer, query.where);

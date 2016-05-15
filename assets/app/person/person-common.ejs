@@ -1,0 +1,19 @@
+<% personList.forEach(function (person, index) { %>
+<tr>
+  <td>
+    <%= index + 1 %>
+  </td>
+  <td>
+    <%= person.name %>
+  </td>
+  <td>
+    <%= person.sex %>
+  </td>
+  <td>
+    <%= person.house.detailAdd %>
+  </td>
+  <td>
+    <%= person.phone %>
+  </td>
+</tr>
+<% }); %>

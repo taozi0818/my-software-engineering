@@ -1,4 +1,8 @@
 $(function () {
+  
+  $('#header').removeClass('hidden');
+  $('#action').removeClass('hidden');
+  
   let $pager = $('#pager'),
     $house = $('#house').select2({
       ajax: {

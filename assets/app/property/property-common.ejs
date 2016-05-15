@@ -1,0 +1,20 @@
+<% propertyList.forEach(function (property, index) { %>
+<tr>
+  <td>
+    <%= index + 1 %>
+  </td>
+  <td>
+    <%= property.house.detailAdd %>
+  </td>
+  <td>
+    <%= property.expense %>
+  </td>
+  <td>
+    <% if (property.status === 'ENABLE') { %>
+    <span class="label label-success label-xs">启用</span>
+    <% } else { %>
+    <span class="label label-danger label-xs">停用</span>
+    <% } %>
+  </td>
+</tr>
+<% }) %>

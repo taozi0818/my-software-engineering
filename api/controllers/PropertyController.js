@@ -5,11 +5,16 @@ const PAGE_NUM = 20;
 module.exports = {
   list: function (req, res, next) {
     let status = req.query.status,
+      house = req.query.house,
       page = req.query.page || 1,
       skipNum = (page - 1)*PAGE_NUM,
       query = {where: {}, skip: skipNum, limit: PAGE_NUM},
       totalCount = 0;
 
+    if (house) {
+      query.where.house = house;
+    }
+    
     if (status) {
       query.where.status = status;
     }

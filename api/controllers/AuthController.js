@@ -13,10 +13,9 @@ module.exports = {
     }).then(function (defer, userInfo) {
 
       if (userInfo.password == password) {
-        req.session.user = {username: username};
+        req.session.user = username;
+        req.session.isAdmin = userInfo.isAdmin;
         return res.success();
-      } else {
-        return res.error();
       }
     }).fail(function (defer, err) {
 

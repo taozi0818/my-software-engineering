@@ -1,5 +1,6 @@
 module.exports.policies = {
 
+  '*': 'sessionAuth',
   AuthController: {
     '*': true
   },
@@ -7,15 +8,18 @@ module.exports.policies = {
     '*': 'sessionAuth'
   },
   ElecController: {
-    '*': 'sessionAuth'
+    clear: ['sessionAuth', 'isAdmin']
   },
   HouseController: {
-    '*': 'sessionAuth'
+    '*': ['sessionAuth', 'isAdmin'],
+    list: 'sessionAuth'
   },
   PersonController: {
-    '*': 'sessionAuth'
+    '*': 'sessionAuth',
+    delete: ['sessionAuth', 'isAdmin']
   },
   PropertyController: {
-    '*': 'sessionAuth'
+    '*': 'sessionAuth',
+    clear: ['sessionAuth', 'isAdmin']
   }
 };
