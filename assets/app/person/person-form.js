@@ -1,5 +1,5 @@
 $(function () {
-  let $house = $('#house').select2({
+  let $house = $('#house').select2({ // 住房选项支持模糊搜索,控制数据库中的数据一致性
     ajax: {
       url: "/house",
       dataType: 'json',
@@ -81,8 +81,11 @@ $(function () {
     language: 'zh-CN'
   });
 
+  // 初始化select元素
   $('#sex').select2();
   $('#education').select2();
+
+  // 创建按钮点击事件
   $('#btn-create').click(function () {
     let house = $house.val(),
       sex = $('#sex').val(),
@@ -124,7 +127,7 @@ $(function () {
 
   $('#btn-edit').click(function () {
     let id = window.location.hash.substr(1),
-      house = $('#house').val(),
+      house = $house.val(),
       sex = $('#sex').val(),
       nation = $('#nation').val(),
       education = $('#education').val(),
@@ -135,7 +138,7 @@ $(function () {
       birthday = $('#birthday').val(),
       name = $('#name').val();
 
-    // 前端数据控制
+    // 前端数据校验
     if (!house || !sex || !nation || !phone || !identity || !name) {
       return showFailDialog('请填写带星号的必填项目');
     }
@@ -162,6 +165,7 @@ $(function () {
     });
   });
 
+  // 人员编辑页面的详情方法
   function detail() {
     let id = window.location.hash.substr(1);
 
@@ -172,7 +176,7 @@ $(function () {
         let data = result.data,
           birthday = moment(data.birthday).format("YYYY-MM-DD"), // 利用moment对时间进行格式化
           $option = $('<option selected>' + data.house.detailAdd + '</option>')
-            .val(data.house);
+            .val(data.house.id); // 加载详情页面的住房选项
 
         $house.append($option).trigger('change');
         $('#name').val(data.name);
@@ -191,7 +195,7 @@ $(function () {
     })
   }
 
-  if (window.location.hash) {
+  if (window.location.hash) { // 判断是编辑页面还是创建页面
     detail();
   }
 

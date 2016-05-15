@@ -16,14 +16,13 @@ module.exports = {
       required: true
     },
     education: {
-      type: 'string',
-      required: true
+      type: 'string'
     },
     work: {
-      type: 'string',
+      type: 'string'
     },
     company: {
-      type: 'string',
+      type: 'string'
     },
     phone: {
       type: 'string'
