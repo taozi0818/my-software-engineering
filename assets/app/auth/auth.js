@@ -16,7 +16,8 @@ $(function () {
         location.href = '/home';
       },
       error: function () { // 登录失败时的提示
-        $('#msg').show().fadeOut(2000);
+        $('#msg').show();
+        $('#msg').fadeOut(2000);
       }
     })
   });

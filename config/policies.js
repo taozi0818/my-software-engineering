@@ -2,7 +2,9 @@ module.exports.policies = {
 
   '*': 'sessionAuth',
   AuthController: {
-    '*': true
+    '*': true,
+    change: 'sessionAuth',
+    changePage: 'sessionAuth'
   },
   HomeController: {
     '*': 'sessionAuth'

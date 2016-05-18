@@ -4,6 +4,8 @@ module.exports.routes = {
   'GET /login': 'Auth.loginPage', // 登陆页面
   'POST /login': 'Auth.login', // 验证登陆逻辑
   'GET /logout': 'Auth.logout', // 登出
+  'PUT /password': 'Auth.change', // 修改密码
+  'GET /password/page': 'Auth.changePage', // 修改密码页面
 
   'GET /': 'Home.homePage', //
   'GET /home': 'Home.homePage', // 主页
