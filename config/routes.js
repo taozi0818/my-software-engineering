@@ -29,11 +29,11 @@ module.exports.routes = {
   'GET /property': 'Property.list', // 按条件查询物业费相关列表
   'GET /property/list/page': 'Property.listPage', // 物业费列表页面
   'PUT /property/clear/:id': 'Property.clear', // 清空物业费欠费并且将状态置为可用状态
-  'PUT /property/:id': 'Property.update', // 物业费管理
+  'PUT /property/change/:id': 'Property.change', // 物业费更新,用于连接物业费统计的接口(暂未投入使用)
 
   // 水电费相关
   'GET /elec': 'Elec.list', // 按条件查询水电费相关列表
   'GET /elec/list/page': 'Elec.listPage', // 水电费管理列表页面
-  'PUT /elec/:id': 'Elec.update', // 水电费管理
+  'PUT /elec/change/:id': 'Elec.change', // 水电费更新,用于连接水电费统计的接口(暂未投入使用)
   'PUT /elec/clear/:id': 'Elec.clear' // 清空欠费并且将状态置为可用状态
 };

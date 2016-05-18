@@ -1,4 +1,5 @@
 module.exports = {
+
   group: 'house',
   globalId: 'House',
   tableName: 'house',

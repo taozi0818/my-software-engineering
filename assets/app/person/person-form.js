@@ -44,7 +44,7 @@ $(function () {
     }
   });
 
-  $('#work').select2().change(function () {
+  $('#work').select2().change(function () { // 页面中状态选相框变化事件
     let work = $('#work').val();
 
     if (work === '在校') {
@@ -72,7 +72,7 @@ $(function () {
   });
 
 
-// 初始化时间插件
+  // 初始化时间插件,详细参数请老师阅读文档
   $('#birthday').datetimepicker({
     format: 'yyyy-mm-dd',
     startView: 3,
@@ -98,7 +98,7 @@ $(function () {
       birthday = $('#birthday').val(),
       name = $('#name').val();
 
-    // 前端数据控制
+    // 前端数据校验
     if (!house || !sex || !nation || !phone || !identity || !name) {
       return showFailDialog('请填写带星号的必填项目');
     }
@@ -125,6 +125,7 @@ $(function () {
     });
   });
 
+  // 编辑按钮事件
   $('#btn-edit').click(function () {
     let id = window.location.hash.substr(1),
       house = $house.val(),

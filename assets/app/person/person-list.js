@@ -2,9 +2,9 @@ $(function () {
 
   $('#header').removeClass('hidden');
   $('#action').removeClass('hidden');
-  
+
   let $pager = $('#pager'),
-    $house = $('#house').select2({
+    $house = $('#house').select2({ // 模糊搜索加载数据库内容
       ajax: {
         url: "/house",
         dataType: 'json',
@@ -148,7 +148,7 @@ $(function () {
       success: function (result) {
         let personListHtml = new EJS({url: '/app/person/person-list.ejs'})
           .render({personList: result.data}),
-          pagerHtml = new EJS({url: '/app/pager/pager.ejs'})
+          pagerHtml = new EJS({url: '/app/pager/pager.ejs'}) // 分页
             .render({page: result.page, pageCount: result.pageCount});
 
         $('#tb-person').empty().html(personListHtml);

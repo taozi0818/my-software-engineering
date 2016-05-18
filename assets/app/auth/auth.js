@@ -3,9 +3,9 @@ $(function () {
     let username = $('#username').val(),
       password = $('#password').val(); // 获取用户名和密码
 
-    password = Base64.encode(password); // 密码加密传输
+    password = $.md5(password); // 密码加密传输
 
-    $.ajax({
+    $.ajax({ // ajax请求登陆
       url: '/login',
       type: 'POST',
       data: {
@@ -17,7 +17,7 @@ $(function () {
       },
       error: function () { // 登录失败时的提示
         $('#msg').show();
-        $('#msg').fadeOut(2000);
+        $('#msg').fadeOut(3000);
       }
     })
   });

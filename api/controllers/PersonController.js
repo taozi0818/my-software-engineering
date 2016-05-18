@@ -4,7 +4,7 @@ import _ from 'lodash';
 const PAGE_NUM = 20;
 
 module.exports = {
-  findOne: function (req, res) {
+  findOne: function (req, res) { // 个人详情,编辑页面加载数据
     let id = req.params.id;
 
     then(function (defer) {
@@ -68,7 +68,7 @@ module.exports = {
       return res.error(err);
     })
   },
-  update: function (req, res) {
+  update: function (req, res, next) {
     let id = req.params.id,
       personData = _.pick(req.body, ['name', 'sex', 'nation', 'education', 'work',
         'company', 'phone', 'identity', 'birthday', 'house']);
@@ -81,7 +81,7 @@ module.exports = {
       return res.success(personInfo);
     }).fail(function (defer, err) {
 
-      return res.error(err);
+      return next(err);
     });
   },
   delete: function (req, res, next) {

@@ -13,10 +13,18 @@
 
 ##### [源码安装](https://nodejs.org)
 
+####  MAC OS
+
+`brew install node`
+
 ### 安装依赖
 
 `npm install`
 
 ## 运行程序
 
-    node --harmony node_modules/babel/lib/_babel-node.js app.js
+    node --harmony node_modules/babel/lib/_babel-node.js app.js || npm start
+
+## 地址
+
+    localhost:1337

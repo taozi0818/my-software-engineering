@@ -12,7 +12,7 @@ module.exports = {
       totalCount = 0;
 
     if (detailAdd) {
-      query.where.detailAdd = {like: `%${detailAdd}%`};
+      query.where.detailAdd = {like: `%${detailAdd}%`}; // 模糊搜索
     }
 
     if (owner) {
@@ -37,7 +37,7 @@ module.exports = {
      return next(err);
    })
   },
-  change: function(req, res, next) {
+  change: function(req, res, next) { // 转让住房
     let owner = req.body.owner,
       id = req.params.id;
 
@@ -52,7 +52,7 @@ module.exports = {
       return next(err);
     })
   },
-  detail: function (req, res) {
+  detail: function (req, res) { // 详情
     let id = req.params.id;
 
     then(function (defer) {

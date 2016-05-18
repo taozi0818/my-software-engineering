@@ -1,5 +1,5 @@
 $(function () {
-  let $owner = $('#owner').select2({
+  let $owner = $('#owner').select2({ // 模糊搜索加载数据库数据
     ajax: {
       url: "/persons",
       dataType: 'json',

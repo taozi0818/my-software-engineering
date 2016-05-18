@@ -50,6 +50,26 @@ module.exports = {
       return next(err);
     })
   },
+  change: function (req, res, next) {
+    let expense = req.body.expense,
+      id = req.params.id,
+      status = 'DISABLE';
+
+    then(function (defer) {
+
+      if (expense >= 50) {
+        Property.update({id: id}, {expense: expense, status: status}, defer);
+      } else {
+        Property.update({id: id}, {expense: expense}, defer);
+      }
+    }).then(function (defer, Info) {
+
+      return res.success(Info);
+    }).fail(function (defer, err) {
+
+      return next(err);
+    })
+  },
   update: function (req, res, next) {
     let id = req.params.id,
       status = req.body.status;

@@ -1,18 +1,23 @@
 <% personList.forEach(function (person, index) { %>
 <tr>
   <td>
+    <!--序号-->
     <%= index + 1 %>
   </td>
   <td>
+    <!--姓名-->
     <%= person.name %>
   </td>
   <td>
+    <!--性别-->
     <%= person.sex %>
   </td>
   <td>
+    <!--住址-->
     <%= person.house.detailAdd %>
   </td>
   <td>
+    <!--联系电话-->
     <%= person.phone %>
   </td>
 </tr>
