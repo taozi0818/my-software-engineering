@@ -20,7 +20,7 @@ $(function () {
             page: page
           },
           success: function (result) {
-            let elecListHtml = new EJS({url: '/app/elec/elec-common.ejs'})
+            let elecListHtml = new EJS({url: '/js/app/elec/elec-common.ejs'})
               .render({elecList: result.data});
 
             $('#tb-elec').empty().html(elecListHtml);

@@ -136,7 +136,7 @@ $(function () {
   function search(page) {
     let name = $('#name').val(),
       house = $('#house').val();
-
+  
     $.ajax({
       url: '/persons',
       type: 'GET',
@@ -146,16 +146,16 @@ $(function () {
         page: page
       },
       success: function (result) {
-        let personListHtml = new EJS({url: '/app/person/person-list.ejs'})
+        let personListHtml = new EJS({url: '/js/app/person/person-list.ejs'})
           .render({personList: result.data}),
-          pagerHtml = new EJS({url: '/app/pager/pager.ejs'}) // 分页
+          pagerHtml = new EJS({url: '/js/app/pager/pager.ejs'}) // 分页
             .render({page: result.page, pageCount: result.pageCount});
-
+  
         $('#tb-person').empty().html(personListHtml);
         $('#pager').empty().html(pagerHtml);
       }
     })
   }
-
+  
   search();
 });

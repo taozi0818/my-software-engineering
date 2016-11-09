@@ -35,5 +35,11 @@ module.exports.routes = {
   'GET /elec': 'Elec.list', // 按条件查询水电费相关列表
   'GET /elec/list/page': 'Elec.listPage', // 水电费管理列表页面
   'PUT /elec/change/:id': 'Elec.change', // 水电费更新,用于连接水电费统计的接口(暂未投入使用)
-  'PUT /elec/clear/:id': 'Elec.clear' // 清空欠费并且将状态置为可用状态
+  'PUT /elec/clear/:id': 'Elec.clear', // 清空欠费并且将状态置为可用状态
+
+  // 管理员用户
+  'GET /admin/users/page': 'Admin.listPage', // 用户列表页面
+  'POST /admin/reset': 'Admin.reset', // 将密码重置为123456
+  'POST /admin/user': 'Admin.add', // 管理员创建用户
+  'GET /admin/users': 'Admin.list' // 管理员获取用户列表
 };

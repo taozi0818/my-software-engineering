@@ -9,8 +9,11 @@ module.exports = {
     password: {
       type: 'string'
     },
-    isAdmin: {
-      type: 'boolean'
+    role: { // 对应RBAC中的角色
+      model: 'Role'
+    },
+    house: { // 用于与住房的关联
+      model: 'House'
     }
   }
 };

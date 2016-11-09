@@ -9,20 +9,22 @@ module.exports = {
       password = req.body.password;
 
     then(function (defer) {
-      User.findOne({username: username}, defer);
+      User.findOne({username: username})
+        .populate('role')
+        .exec(defer);
     }).then(function (defer, userInfo) {
 
       if (userInfo.password == password) {
         req.session.user = username;
-        req.session.isAdmin = userInfo.isAdmin;
+        req.session.role = userInfo.role;
         return res.success();
       } else {
-        return res.error();
+        return res.error(EService.E_PASSWORD);
       }
     }).fail(function (defer, err) {
 
       return next(err);
-    })
+    });
   },
   change: function (req, res, next) {
     let username = req.body.username,
@@ -51,10 +53,9 @@ module.exports = {
   logout: function (req, res, next) { // 账号登出
     req.session.destroy(function () {
       return res.redirect('/login');
-    })
+    });
   },
   changePage: function (req, res) { // 更改密码页面
     res.render('password/password.ejs');
   }
-
 };

@@ -1,0 +1,63 @@
+<%
+var page = window.location.hash.substr(1) || 1,
+  prePage = false,
+  sufPage = false;
+page = parseInt(page);
+%>
+<nav>
+  <ul class="pagination">
+    <!--上一页-->
+    <% if (page == 1) { %>
+    <li class="disabled">
+      <a href="#1" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <% } else { %>
+    <li>
+      <a id="pager-pre" href="#<%= page - 1 %>" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <% } %>
+    <!--页码-->
+    <% for(var i = 1; i <= pageCount; i++) { %>
+
+    <% if (page == i) { %>
+    <li class="active"><a href="#"><%= i %></a></li>
+
+    <% } else if ((page - i) >= 3 && prePage == false) { %>
+    <li><a class="pager-page" href="#<%= 1 %>" data="<%= 1 %>">1</a></li>
+    <% if (page - i != 3) { %>
+    <li><a class="pager-page" href="#<%= page - 3 %>" data="<%= page - 3 %>">...</a></li>
+    <% prePage = true; %>
+    <% } %>
+
+    <% } else if ((page - i) <= -3 && sufPage == false) { %>
+    <% if (pageCount - page != 3) { %>
+    <li><a class="pager-page" href="#<%= page + 3 %>" data="<%= page + 3 %>">...</a></li>
+    <% sufPage = true; %>
+    <% } %>
+    <li><a class="pager-page" href="#<%= pageCount %>" data="<%= pageCount %>"><%= pageCount %></a></li>
+
+    <% } else if ((page - i) > -3 && (page - i) < 3) { %>
+    <li><a class="pager-page" href="#<%= i %>" data="<%= i %>"><%= i %></a></li>
+    <% } %>
+    <% } %>
+
+    <!--下一页-->
+    <% if (page == pageCount) { %>
+    <li class="disabled">
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    <% } else { %>
+    <li>
+      <a id="pager-next" href="#<%= page + 1 %>" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    <% } %>
+  </ul>
+</nav>

@@ -7,9 +7,9 @@
 <% stylesheet('/libs/bootstrap/bootstrap.min.css'); %>
 <% script('/libs/bootstrap/bootstrap.min.js'); %>
 <% if (req.session.isAdmin === false) {%>
-<% script('/app/property/property-common.js'); %>
+<% script('/js/app/property/property-common.js'); %>
 <% } else {%>
-<% script('/app/property/property-list.js'); %>
+<% script('/js/app/property/property-list.js'); %>
 <% } %>
 
 <section class="content">

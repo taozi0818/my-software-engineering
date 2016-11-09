@@ -1,5 +1,22 @@
 $(function () {
+
   $('#btn-login').click(function () {
+    login();
+  });
+
+  $('#username').keydown(function (event) {
+    if (event.keyCode === 13) {
+      login();
+    }
+  });
+
+  $('#password').keydown(function (event) {
+    if (event.keyCode === 13) {
+      login();
+    }
+  });
+
+  function login() { // 发送登陆请求
     let username = $('#username').val(),
       password = $('#password').val(); // 获取用户名和密码
 
@@ -19,6 +36,6 @@ $(function () {
         $('#msg').show();
         $('#msg').fadeOut(3000);
       }
-    })
-  });
+    });
+  }
 });

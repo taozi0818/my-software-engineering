@@ -1,0 +1,23 @@
+<% userList.forEach(function (user, index) { %>
+<tr>
+  <td>
+    <%= index + 1 %>
+  </td>
+  <td>
+    <%= user.username %>
+  </td>
+  <td>
+    <%= user.role %>
+  </td>
+  <td>
+    <% if (user.house) { %>
+    <%= user.house.detailAdd %>
+    <% } else { %>
+    <%= '暂未绑定' %>
+    <% } %>
+  </td>
+  <td>
+    <button class="btn btn-primary btn-clear btn-xs">重置密码</button>
+  </td>
+</tr>
+<% }); %>

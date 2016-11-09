@@ -1,6 +1,14 @@
-module.exports = function (req, res, next) { // 权限控制策略之管理员身份
+/**
+ * 权限控制,管理员与非管理员 
+ * @param req
+ * @param res
+ * @param next
+ * @returns {*}
+ */
 
-  if (req.session.isAdmin === false) {
+module.exports = function (req, res, next) { 
+
+  if (req.session.role && req.session.role.name !== 'admin') {
     return res.error('对不起,只有管理员身份才能访问');
   }
 

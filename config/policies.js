@@ -7,6 +7,9 @@ module.exports.policies = {
     change: 'sessionAuth',
     changePage: 'sessionAuth'
   },
+  AdminController: {
+    '*': ['sessionAuth', 'isAdmin']
+  },
   HomeController: {
     '*': 'sessionAuth'
   },

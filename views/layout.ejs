@@ -9,6 +9,7 @@
   <link href="/libs/bootstrap-dialog/bootstrap-dialog.min.css" rel="stylesheet" type="text/css"/>
   <link href="/libs/adminlte/AdminLTE.min.css" rel="stylesheet" type="text/css"/>
   <link href="/libs/adminlte/skin-blue-light.min.css" rel="stylesheet" type="text/css"/>
+  <link href="/styles/custom.css" rel="stylesheet" type="text/css"/>
   <%- stylesheets %>
   <script src="/libs/html5shiv.js"></script>
   <script src="/libs/respond.min.js"></script>
@@ -26,17 +27,30 @@
         <span class="sr-only">Toggle navigation</span>
       </a>
       <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <li>
-            <a href="/password/page">修改密码</a>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav">
-          <li>
-            <a href="/logout">
-              注销&nbsp<i class="fa fa-sign-out"></i>&nbsp;&nbsp;
+        <ul class="nav navbar-nav" id="navbar-user">
+          <li class="dropdown messages-menu" id="menu">
+            <a href="#" class="dropdown-toggle" id="username" data-toggle="dropdown">
+              <i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;<%= req.session.user %>
             </a>
-            <input class="form-control" id="user" type="hidden" value="<%= req.session.user %>">
+            <ul class="dropdown-menu">
+              <li>
+                <div class="slimScrollDiv">
+                  <ul class="menu">
+                    <li>
+                      <a href="/password/page">
+                        <i class="fa fa-unlock-alt">&nbsp;&nbsp;&nbsp;&nbsp;</i><span class="font-grey">修改密码</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/logout">
+                        <i class="fa fa-sign-out"></i>&nbsp;&nbsp;&nbsp;<span class="font-grey">退出登录</span>
+                      </a>
+                      <input class="form-control" id="user" type="hidden" value="<%= req.session.user %>">
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
           </li>
         </ul>
       </div>
@@ -44,26 +58,16 @@
   </header>
   <aside class="main-sidebar">
     <section class="sidebar">
-      <ul class="sidebar-menu">
-        <li class="active treeview">
+      <ul class="sidebar-menu" id="treeview-menu">
+        <li class="active treeview" id="view-dashboard">
           <a href="/home">
             <i class="fa fa-dashboard"></i>
             <span>面板</span>
           </a>
         </li>
-        <li class="treeview" id="view-house">
+        <li class="treeview" id="view-person">
           <a href="#">
-            <i class="fa fa-home"></i>
-            <span>住房管理</span>
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="/house/list/page"><i class="fa fa-circle-o"></i>房屋列表</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-users"></i>
+            <i class="fa fa-user"></i>
             <span>小区人员管理</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
@@ -71,7 +75,7 @@
             <li><a href="/persons/list/page"><i class="fa fa-circle-o"></i>小区人员列表</a></li>
           </ul>
         </li>
-        <li class="treeview">
+        <li class="treeview" id="view-money">
           <a href="#">
             <i class="fa fa-usd"></i>
             <span>缴费管理</span>
@@ -109,9 +113,10 @@
 <script src="/libs/adminlte/AdminLTE.min.js"></script>
 <script src="/libs/ejs.js"></script>
 <script src="/libs/ejs-helper.js"></script>
-<script src="/app/app.js"></script>
-<% if (req.session.isAdmin === false) { %>
-<script src="/app/isAdmin.js"></script>
+<script src="/js/index.js"></script>
+<script src="/js/app/app.js"></script>
+<% if (req.session.role && req.session.role.name === 'admin') { %>
+<script src="/js/isAdmin.js"></script>
 <% } %>
 <%- scripts %>
 </body>

@@ -40,6 +40,9 @@
     "type": "git",
     "url": "github.com/taozi0818/my-software-engineering.git"
   },
-  "author": "tyt",
+  "author": {
+    "name": "tyt",
+    "email": "783279113@qq.com"
+  },
   "license": ""
 }
