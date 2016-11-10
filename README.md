@@ -35,12 +35,10 @@
 
     node --harmony node_modules/babel/lib/_babel-node.js app.js || npm start
 
-## 地址
-
-    http://localhost:1337
-
 ## 使用
 
   - 使用前请先将根目录下的数据导入数据库community.sql
   - 数据库登陆名 root,密码为空
   - 如需更改,请在config/connections中参考注释进行修改
+  - 浏览器中打开localhost:1338
+  - 所有账号初始登陆密码均为123456

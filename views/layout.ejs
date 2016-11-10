@@ -30,7 +30,7 @@
         <ul class="nav navbar-nav" id="navbar-user">
           <li class="dropdown messages-menu" id="menu">
             <a href="#" class="dropdown-toggle" id="username" data-toggle="dropdown">
-              <i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;<%= req.session.user %>
+              <i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;
             </a>
             <ul class="dropdown-menu">
               <li>
@@ -45,7 +45,7 @@
                       <a href="/logout">
                         <i class="fa fa-sign-out"></i>&nbsp;&nbsp;&nbsp;<span class="font-grey">退出登录</span>
                       </a>
-                      <input class="form-control" id="user" type="hidden" value="<%= req.session.user %>">
+                      <input class="form-control" id="user" type="hidden">
                     </li>
                   </ul>
                 </div>
@@ -115,9 +115,6 @@
 <script src="/libs/ejs-helper.js"></script>
 <script src="/js/index.js"></script>
 <script src="/js/app/app.js"></script>
-<% if (req.session.role && req.session.role.name === 'admin') { %>
-<script src="/js/isAdmin.js"></script>
-<% } %>
 <%- scripts %>
 </body>
 </html>

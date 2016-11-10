@@ -3,7 +3,7 @@ $(function () {
   $('#header').removeClass('hidden');
   $('#action').removeClass('hidden');
 
-  let $pager = $('#pager'),
+  var $pager = $('#pager'),
     $house = $('#house').select2({ // 模糊搜索加载数据库内容
       ajax: {
         url: "/house",
@@ -36,7 +36,7 @@ $(function () {
           return repo.text;
         }
 
-        let result = [];
+        var result = [];
         result.push('<div>');
         result.push('<i class="fa fa-home fa-2x"></i>');
         result.push('<span style="margin-left: 1em;">' + repo.detailAdd + '</span>');
@@ -51,7 +51,7 @@ $(function () {
     });
 
   // 点击删除
-  $('#tb-person').on('click', '.btn-delete', function () {
+  $('#tb-person').on('click', '.btn-devare', function () {
     var $allTd = $(this).parent().parent().children(),
       name = $allTd.eq(1).text().trim(),
       id = $allTd.find('.hid-id')[0].value,
@@ -85,11 +85,11 @@ $(function () {
   });
 
   function delPerson(dialogRef) {
-    let id = $('#id').val();
+    var id = $('#id').val();
 
     $.ajax({
       url: '/persons/' + id,
-      type: 'DELETE',
+      type: 'DEvarE',
       success: function () {
         dialogRef.close();
         search();
@@ -106,7 +106,7 @@ $(function () {
 
   // 上一页
   $pager.on('click', '#pager-pre', function () {
-    let page = window.location.hash.substr(1) || 1;
+    var page = window.location.hash.substr(1) || 1;
 
     if (page === 1) {
       search(1);
@@ -117,13 +117,13 @@ $(function () {
 
   // 下一页
   $pager.on('click', '#pager-next', function () {
-    let page = window.location.hash.substr(1) || 1;
+    var page = window.location.hash.substr(1) || 1;
 
     search(page + 1);
   });
 
   $pager.on('click', '.pager-page', function () {
-    let page = $(this).attr('data');
+    var page = $(this).attr('data');
 
     search(page);
   });
@@ -134,7 +134,7 @@ $(function () {
   });
 
   function search(page) {
-    let name = $('#name').val(),
+    var name = $('#name').val(),
       house = $('#house').val();
   
     $.ajax({
@@ -146,7 +146,7 @@ $(function () {
         page: page
       },
       success: function (result) {
-        let personListHtml = new EJS({url: '/js/app/person/person-list.ejs'})
+        var personListHtml = new EJS({url: '/js/app/person/person-list.ejs'})
           .render({personList: result.data}),
           pagerHtml = new EJS({url: '/js/app/pager/pager.ejs'}) // 分页
             .render({page: result.page, pageCount: result.pageCount});

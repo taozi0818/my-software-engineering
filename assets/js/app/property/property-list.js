@@ -1,9 +1,9 @@
 $(function () {
-  
+
   $('#header').removeClass('hidden');
   $('#action').removeClass('hidden');
-  
-  let $pager = $('#pager'),
+
+  var $pager = $('#pager'),
     $house = $('#house').select2({
       ajax: {
         url: "/house",
@@ -35,7 +35,7 @@ $(function () {
           return repo.text;
         }
 
-        let result = [];
+        var result = [];
         result.push('<div>');
         result.push('<i class="fa fa-home fa-2x"></i>');
         result.push('<span style="margin-left: 1em;">' + repo.detailAdd + '</span>');
@@ -53,7 +53,7 @@ $(function () {
   $('#status').select2();
   // 上一页
   $pager.on('click', '#pager-pre', function () {
-    let page = window.location.hash.substr(1) || 1;
+    var page = window.location.hash.substr(1) || 1;
 
     if (page === 1) {
       search(1);
@@ -64,13 +64,13 @@ $(function () {
 
   // 下一页
   $pager.on('click', '#pager-next', function () {
-    let page = window.location.hash.substr(1) || 1;
+    var page = window.location.hash.substr(1) || 1;
 
     search(page + 1);
   });
 
   $pager.on('click', '.pager-page', function () {
-    let page = $(this).attr('data');
+    var page = $(this).attr('data');
 
     search(page);
   });
@@ -116,7 +116,7 @@ $(function () {
   });
 
   function clear(dialogRef) {
-    let id = $('#id').val();
+    var id = $('#id').val();
 
     $.ajax({
       url: '/property/clear/' + id,
@@ -133,7 +133,7 @@ $(function () {
   }
 
   function search(page) {
-    let status = $('#status').val();
+    var status = $('#status').val();
 
     $.ajax({
       url: '/property',
@@ -143,9 +143,9 @@ $(function () {
         status: status
       },
       success: function (result) {
-        let proListHtml = new EJS({url: '/app/property/property-list.ejs'})
+        var proListHtml = new EJS({url: '/js/app/property/property-list.ejs'})
           .render({propertyList: result.data}),
-          pagerHtml = new EJS({url: '/app/pager/pager.ejs'})
+          pagerHtml = new EJS({url: '/js/app/pager/pager.ejs'})
             .render({page: result.page, pageCount: result.pageCount});
 
         $('#tb-property').empty().html(proListHtml);

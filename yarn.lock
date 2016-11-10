@@ -2188,7 +2188,7 @@ include-all@^1.0.0:
   dependencies:
     lodash "3.10.1"
 
-include-all@~0.1.2, include-all@~0.1.6:
+include-all@~0.1.6:
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/include-all/-/include-all-0.1.6.tgz#a89676b085869185486ebfe9a19cb69ab84a652b"
   dependencies:
@@ -3568,13 +3568,6 @@ safefs@^3.1.2:
   resolved "https://registry.yarnpkg.com/safefs/-/safefs-3.2.2.tgz#8170c1444d7038e08caea05a374fae2fa349e15c"
   dependencies:
     graceful-fs "*"
-
-sails-build-dictionary@0.10.1:
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/sails-build-dictionary/-/sails-build-dictionary-0.10.1.tgz#b8cc21b97d420f63d1417a44c2671c94024e3d3d"
-  dependencies:
-    include-all "~0.1.2"
-    lodash "~2.4.1"
 
 sails-disk@~0.10.9:
   version "0.10.10"

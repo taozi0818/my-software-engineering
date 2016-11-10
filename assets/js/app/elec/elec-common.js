@@ -1,7 +1,7 @@
 $(function () {
 
   function search(page) {
-    let detailAdd = $('#user').val();
+    var detailAdd = $('#user').val();
 
     $.ajax({
       url: '/house',
@@ -10,7 +10,7 @@ $(function () {
         detailAdd: detailAdd
       },
       success: function(result) {
-        let house = result.data[0].id;
+        var house = result.data[0].id;
 
         $.ajax({
           url: '/elec',
@@ -20,7 +20,7 @@ $(function () {
             page: page
           },
           success: function (result) {
-            let elecListHtml = new EJS({url: '/js/app/elec/elec-common.ejs'})
+            var elecListHtml = new EJS({url: '/js/app/elec/elec-common.ejs'})
               .render({elecList: result.data});
 
             $('#tb-elec').empty().html(elecListHtml);

@@ -1,7 +1,7 @@
 import then from 'thenjs';
 import _ from 'lodash';
 
-const PAGE_NUM = 20;
+const PAGE_NUM = 10;
 
 module.exports = {
   findOne: function (req, res) { // 个人详情,编辑页面加载数据

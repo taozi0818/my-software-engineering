@@ -1,6 +1,6 @@
 import then from 'thenjs';
 
-const PAGE_NUM = 20;
+const PAGE_NUM = 10;
 
 module.exports = {
   list: function (req, res, next) {

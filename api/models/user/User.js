@@ -4,7 +4,9 @@ module.exports = {
   tableName: 'user',
   attributes: {
     username: {
-      type: 'string'
+      type: 'string',
+      required: true,
+      unique: true
     },
     password: {
       type: 'string'

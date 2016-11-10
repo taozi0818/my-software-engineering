@@ -1,5 +1,5 @@
 $(function () {
-  let $house = $('#house').select2({ // 住房选项支持模糊搜索,控制数据库中的数据一致性
+  var $house = $('#house').select2({ // 住房选项支持模糊搜索,控制数据库中的数据一致性
     ajax: {
       url: "/house",
       dataType: 'json',
@@ -30,7 +30,7 @@ $(function () {
         return repo.text;
       }
 
-      let result = [];
+      var result = [];
       result.push('<div>');
       result.push('<i class="fa fa-home fa-2x"></i>');
       result.push('<span style="margin-left: 1em;">' + repo.detailAdd + '</span>');
@@ -45,7 +45,7 @@ $(function () {
   });
 
   $('#work').select2().change(function () { // 页面中状态选相框变化事件
-    let work = $('#work').val();
+    var work = $('#work').val();
 
     if (work === '在校') {
       $('#l-school').removeClass('hidden');
@@ -87,7 +87,7 @@ $(function () {
 
   // 创建按钮点击事件
   $('#btn-create').click(function () {
-    let house = $house.val(),
+    var house = $house.val(),
       sex = $('#sex').val(),
       nation = $('#nation').val(),
       education = $('#education').val(),
@@ -127,7 +127,7 @@ $(function () {
 
   // 编辑按钮事件
   $('#btn-edit').click(function () {
-    let id = window.location.hash.substr(1),
+    var id = window.location.hash.substr(1),
       house = $house.val(),
       sex = $('#sex').val(),
       nation = $('#nation').val(),
@@ -168,13 +168,13 @@ $(function () {
 
   // 人员编辑页面的详情方法
   function detail() {
-    let id = window.location.hash.substr(1);
+    var id = window.location.hash.substr(1);
 
     $.ajax({
       url: '/persons/' + id,
       type: 'GET',
       success: function (result) {
-        let data = result.data,
+        var data = result.data,
           birthday = moment(data.birthday).format("YYYY-MM-DD"), // 利用moment对时间进行格式化
           $option = $('<option selected>' + data.house.detailAdd + '</option>')
             .val(data.house.id); // 加载详情页面的住房选项

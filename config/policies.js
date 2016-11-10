@@ -1,5 +1,5 @@
 module.exports.policies = {
-
+  
   // 接口策略过滤,策略在api/policies中
   '*': 'sessionAuth',
   AuthController: {

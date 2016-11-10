@@ -1,5 +1,5 @@
 $(function () {
-  let $owner = $('#owner').select2({ // 模糊搜索加载数据库数据
+  var $owner = $('#owner').select2({ // 模糊搜索加载数据库数据
     ajax: {
       url: "/persons",
       dataType: 'json',
@@ -30,7 +30,7 @@ $(function () {
         return repo.text;
       }
 
-      let result = [];
+      var result = [];
       result.push('<div>');
       result.push('<i class="fa fa-user fa-2x"></i>');
       result.push('<span style="margin-left: 1em;">' + repo.name + '</span>');
@@ -44,13 +44,13 @@ $(function () {
   });
 
   function detail() {
-    let id = window.location.hash.substr(1);
+    var id = window.location.hash.substr(1);
 
     $.ajax({
       url: '/house/' + id,
       type: 'GET',
       success: function (result) {
-        let data = result.data,
+        var data = result.data,
           $option = $('<option selected>' + data.owner.name + '</option>')
             .val(data.owner.id);
 
@@ -61,7 +61,7 @@ $(function () {
   }
 
   $('#btn-edit').click(function () {
-    let owner = $('#owner').val(),
+    var owner = $('#owner').val(),
       id = window.location.hash.substr(1);
 
     $.ajax({

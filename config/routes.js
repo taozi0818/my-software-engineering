@@ -1,6 +1,6 @@
 module.exports.routes = {
 
-  // 授权
+  // 登陆相关
   'GET /login': 'Auth.loginPage', // 登陆页面
   'POST /login': 'Auth.login', // 验证登陆逻辑
   'GET /logout': 'Auth.logout', // 登出
@@ -9,6 +9,7 @@ module.exports.routes = {
 
   'GET /': 'Home.homePage', //
   'GET /home': 'Home.homePage', // 主页
+  
   // 人员相关
   'GET /persons/list/page': 'Person.listPage', // 小区人员列表页面
   'GET /persons/form/page': 'Person.formPage', // 新建人员页面
@@ -38,8 +39,9 @@ module.exports.routes = {
   'PUT /elec/clear/:id': 'Elec.clear', // 清空欠费并且将状态置为可用状态
 
   // 管理员用户
+  'GET /admin/user/form/page': 'Admin.formPage', // 新增用户界面
   'GET /admin/users/page': 'Admin.listPage', // 用户列表页面
-  'POST /admin/reset': 'Admin.reset', // 将密码重置为123456
+  'PUT /admin/reset': 'Admin.reset', // 将密码重置为123456
   'POST /admin/user': 'Admin.add', // 管理员创建用户
   'GET /admin/users': 'Admin.list' // 管理员获取用户列表
 };

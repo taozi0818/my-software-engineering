@@ -17,7 +17,7 @@ $(function () {
   });
 
   function login() { // 发送登陆请求
-    let username = $('#username').val(),
+    var username = $('#username').val(),
       password = $('#password').val(); // 获取用户名和密码
 
     password = $.md5(password); // 密码加密传输
@@ -29,7 +29,9 @@ $(function () {
         username: username,
         password: password
       },
-      success: function () { // 成功后自动跳转
+      success: function (result) { // 成功后自动跳转
+        sessionStorage.setItem('user', result.data.username);
+        sessionStorage.setItem('role', result.data.role.name);
         location.href = '/home';
       },
       error: function () { // 登录失败时的提示

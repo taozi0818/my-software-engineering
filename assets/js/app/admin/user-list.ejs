@@ -7,9 +7,6 @@
     <%= user.username %>
   </td>
   <td>
-    <%= user.role %>
-  </td>
-  <td>
     <% if (user.house) { %>
     <%= user.house.detailAdd %>
     <% } else { %>
@@ -17,7 +14,15 @@
     <% } %>
   </td>
   <td>
-    <button class="btn btn-primary btn-clear btn-xs">重置密码</button>
+    <% if (user.role == 1) { %>
+    <%= '管理员' %>
+    <% } else { %>
+    <%= '普通用户' %>
+    <% } %>
+  </td>
+  <td>
+    <input type="hidden" data="<%= user.username %>">
+    <button class="btn btn-primary btn-reset btn-xs">重置密码</button>
   </td>
 </tr>
 <% }); %>

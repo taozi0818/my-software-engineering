@@ -1,5 +1,5 @@
 $(function () {
-  let $pager = $('#pager'),
+  var $pager = $('#pager'),
     $owner = $('#owner').select2({
       ajax: {
         url: "/persons",
@@ -32,7 +32,7 @@ $(function () {
           return repo.text;
         }
 
-        let result = [];
+        var result = [];
         result.push('<div>');
         result.push('<i class="fa fa-user fa-2x"></i>');
         result.push('<span style="margin-left: 1em;">' + repo.name + '</span>');
@@ -47,7 +47,7 @@ $(function () {
 
   // 上一页
   $pager.on('click', '#pager-pre', function () {
-    let page = window.location.hash.substr(1) || 1;
+    var page = window.location.hash.substr(1) || 1;
 
     if (page === 1) {
       search(1);
@@ -58,19 +58,19 @@ $(function () {
 
   // 下一页
   $pager.on('click', '#pager-next', function () {
-    let page = window.location.hash.substr(1) || 1;
+    var page = window.location.hash.substr(1) || 1;
 
     search(page + 1);
   });
 
   $pager.on('click', '.pager-page', function () {
-    let page = $(this).attr('data');
+    var page = $(this).attr('data');
 
     search(page);
   });
 
   function search(page) {
-    let owner = $('#owner').val(),
+    var owner = $('#owner').val(),
       detailAdd = $('#detailAdd').val();
 
     $.ajax({
@@ -82,9 +82,9 @@ $(function () {
         page: page
       },
       success: function (result) {
-        let houseListHtml = new EJS({url: '/app/house/house-list.ejs'})
+        var houseListHtml = new EJS({url: '/js/app/house/house-list.ejs'})
           .render({houseList: result.data}),
-          pagerHtml = new EJS({url: '/app/pager/pager.ejs'})
+          pagerHtml = new EJS({url: '/js/app/pager/pager.ejs'})
             .render({page: result.page, pageCount: result.pageCount});
 
         $('#tb-house').empty().html(houseListHtml);

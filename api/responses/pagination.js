@@ -1,5 +1,5 @@
 module.exports = function (pageIndex, totalCount, data) {
-  const PAGE_NUM = 20;
+  const PAGE_NUM = 10;
   let pageCount,
     res = this.res;
 

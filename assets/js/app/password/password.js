@@ -1,6 +1,6 @@
 $(function () {
   function change() {
-    let username = $('#user').val(),
+    var username = $('#user').val(),
       old = $('#old-password').val(),
       newP = $('#new-password').val(),
       newP2 = $('#new-password2').val(),

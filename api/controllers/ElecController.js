@@ -1,6 +1,6 @@
 import then from 'thenjs';
 
-const PAGE_NUM = 20; // 每页显示条数
+const PAGE_NUM = 10; // 每页显示条数
 
 module.exports = {
   list: function (req, res, next) {

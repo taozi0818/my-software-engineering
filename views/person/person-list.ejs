@@ -6,7 +6,7 @@
 <% script('/libs/select2/zh-CN.js'); %>
 <% stylesheet('/libs/bootstrap/bootstrap.min.css'); %>
 <% script('/libs/bootstrap/bootstrap.min.js'); %>
-<% if (req.session.isAdmin === false) {%>
+<% if (req.session.role.name !== 'admin') {%>
 <% script('/js/app/person/person-common.js'); %>
 <% } else {%>
 <% script('/js/app/person/person-list.js'); %>

@@ -1,21 +1,33 @@
 import then from 'thenjs';
 import crypto from 'crypto';
 
-const PAGE_NUM = 20;
+const PAGE_NUM = 10;
 
 module.exports = {
   listPage: function (req, res) {
-     res.render('admin/list.ejs');
+    res.render('admin/list.ejs');
+  },
+  formPage: function (req, res) {
+    res.render('admin/form.ejs');
   },
   list: function (req, res, next) {
     let page = req.query.page || 1,
-      skip = (page -1) * PAGE_NUM,
+      skip = (page - 1) * PAGE_NUM,
+      role = req.query.role,
+      username = req.query.username,
       query = {where: {}, skip: skip, limit: PAGE_NUM},
       totalCount = 0;
 
-    
+    if (role) {
+      query.where.role = role;
+    }
+
+    if (username) {
+      query.where.username = {contains: username};
+    }
+
     then(function (defer) {
-      
+
       User.count(query, defer)
     }).then(function (defer, count) {
       totalCount = count;
@@ -57,7 +69,7 @@ module.exports = {
     }).then(function (defer, user) {
 
       if (user) {
-        return res.success('BINDED');
+        return res.success('HOUSE_BINDED');
       }
 
       User.create({

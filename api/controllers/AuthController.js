@@ -17,7 +17,7 @@ module.exports = {
       if (userInfo.password == password) {
         req.session.user = username;
         req.session.role = userInfo.role;
-        return res.success();
+        return res.success(userInfo);
       } else {
         return res.error(EService.E_PASSWORD);
       }
